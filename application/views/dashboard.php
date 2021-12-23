@@ -2,17 +2,17 @@
 <html lang="en">
 
 <!-- Head -->
-<?php $this->load->view("admin/_partials/head.php") ?>
+<?php $this->load->view("_partials/head.php") ?>
 
 <body class="nav-fixed">
 
 	<!-- Topbar -->
-	<?php $this->load->view("admin/_partials/topbar.php") ?>
+	<?php $this->load->view("_partials/topbar.php") ?>
 
 	<div id="layoutSidenav">
 
 		<!-- Sidebar -->
-		<?php $this->load->view("admin/_partials/sidebar.php") ?>
+		<?php $this->load->view("_partials/sidebar.php") ?>
 		<div id="layoutSidenav_content">
 			<main>
 
@@ -32,11 +32,11 @@
 
 				<div class="container mt-n10">
 
-					<?php if ($totalPesananMasuk > 0) { ?>
+					
 						<div class="d-flex justify-content-between alert alert-success alert-dismissible fade show mt-5" role="alert">
 							<div class="col-lg-12 md-6 ">
 								<div class="align-items-center">
-									<p><strong>Pemberitahuan!</strong> Terdapat <strong><?= $totalPesananMasuk ?></strong> Pesanan Terbaru Mohon Konfirmasi.</p>
+									<p><strong>Pemberitahuan!</strong> Terdapat <strong>5</strong> Pesanan Terbaru Mohon Konfirmasi.</p>
 								</div>
 								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
@@ -45,7 +45,6 @@
 								<a href="<?= base_url('admin/Transaksi') ?>" class="btn btn-primary btn-sm align-items-center">Lihat Pesanan</a>
 							</div>
 						</div>
-					<?php } ?>
 
 					<div class="row">
 						<div class="col-xxl-3 col-lg-4">
@@ -54,7 +53,7 @@
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="mr-3">
 											<div class="text-white-75 small">Pesanan Masuk</div>
-											<div class="text-lg font-weight-bold"><?= $totalPesananMasuk ?></div>
+											<div class="text-lg font-weight-bold">5</div>
 										</div>
 										<i class="feather-xl text-white-50" data-feather="activity"></i>
 									</div>
@@ -72,7 +71,7 @@
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="mr-3">
 											<div class="text-white-75 small">Pesanan Dikemas</div>
-											<div class="text-lg font-weight-bold"><?= $totalPesananDikemas ?></div>
+											<div class="text-lg font-weight-bold">5</div>
 										</div>
 										<i class="feather-xl text-white-50" data-feather="activity"></i>
 									</div>
@@ -89,7 +88,7 @@
 									<div class="d-flex justify-content-between align-items-center">
 										<div class="mr-3">
 											<div class="text-white-75 small">Transaksi Selesai</div>
-											<div class="text-lg font-weight-bold"><?= $totalTransaksiSelesai ?></div>
+											<div class="text-lg font-weight-bold">5</div>
 										</div>
 										<i class="feather-xl text-white-50" data-feather="activity"></i>
 									</div>
@@ -100,143 +99,19 @@
 								</div>
 							</div>
 						</div>
-						<!-- <div class="col-xxl-3 col-lg-3">
-							<div class="card bg-info text-white mb-4">
-								<div class="card-body">
-									<div class="d-flex justify-content-between align-items-center">
-										<div class="mr-3">
-											<div class="text-white-75 small">Transaksi yang ditolak</div>
-											<div class="text-lg font-weight-bold"><?= $totalTransaksiDitolak ?></div>
-										</div>
-										<i class="feather-xl text-white-50" data-feather="activity"></i>
-									</div>
-								</div>
-								<div class="card-footer d-flex align-items-center justify-content-between">
-									<a class="small text-white stretched-link" href="<?= base_url('admin/Transaksi/ditolak') ?>">Lihat Detail</a>
-									<div class="small text-white"><i class="fas fa-angle-right"></i></div>
-								</div>
-							</div>
-						</div> -->
 					</div>
 
-					<div class="row">
-						<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 mb-4">
-							<div class="card h-100">
-								<div class="card-header">
-									Grafik Produk Terlaris
-								</div>
-
-								<div class="card-body">
-									<?php $i = 1;
-									foreach ($produkTerlaris as $data) { ?>
-										<input type="hidden" id="produk<?= $i ?>" value="<?= $data['jumlahBeli'] ?>">
-
-									<?php $i++;
-									} ?>
-									<?php $i = 1;
-									foreach ($produkTerlaris as $data) { ?>
-										<input type="hidden" id="namaproduk<?= $i ?>" value="<?= $data['namaProduk'] ?>">
-
-									<?php $i++;
-									} ?>
-									<!-- <input type="hidden" id="inp36terbooking" value="35">
-									<input type="hidden" id="inp36terjual" value="35">
-									<input type="hidden" id="inp36terbuang" value="35"> -->
-									<!-- <input type="hidden" id="inp36tersedia" value="<?= $data36tersedia; ?>">
-									<input type="hidden" id="inp36terbooking" value="<?= $data36terbooking; ?>">
-									<input type="hidden" id="inp36terjual" value="<?= $data36terjual; ?>"> -->
-									<div class="panel panel-primary">
-										<div class="panel-body" style="position: relative; height:280px; width:100%;">
-											<canvas id="36"></canvas>
-										</div>
-									</div>
-								</div>
-							</div>
-
-						</div>
-						<!-- <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
-							<div class="card h-100">
-								<div class="card-header">
-									Rumah 40
-								</div>
-								<div class="card-body">
-									<input type="hidden" id="inp40tersedia" value="<?= $data40tersedia; ?>">
-									<input type="hidden" id="inp40terbooking" value="<?= $data40terbooking; ?>">
-									<input type="hidden" id="inp40terjual" value="<?= $data40terjual; ?>">
-									<div class="panel panel-primary">
-										<div class="panel-body" style="position: relative; height:280px; width:100%;">
-											<canvas id="40"></canvas>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
-					</div>
-					<!-- <div class="row">
-						<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
-							<div class="card h-100">
-								<div class="card-header">
-									Rumah 45
-								</div>
-								<div class="card-body">
-									<div class="panel panel-primary">
-										<input type="hidden" id="inp45tersedia" value="<?= $data45tersedia; ?>">
-										<input type="hidden" id="inp45terbooking" value="<?= $data45terbooking; ?>">
-										<input type="hidden" id="inp45terjual" value="<?= $data45terjual; ?>">
-										<div class="panel-body" style="position: relative; height:280px; width:100%;">
-											<canvas id="45"></canvas>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-4">
-							<div class="card h-100">
-								<div class="card-header">
-									Ruko
-								</div>
-								<div class="card-body">
-									<input type="hidden" id="inpRukotersedia" value="<?= $dataRukotersedia; ?>">
-									<input type="hidden" id="inpRukoterbooking" value="<?= $dataRukoterbooking; ?>">
-									<input type="hidden" id="inpRukoterjual" value="<?= $dataRukoterjual; ?>">
-									<div class="panel panel-primary">
-										<div class="panel-body" style="position: relative; height:280px; width:100%;">
-											<canvas id="Ruko"></canvas>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div> -->
-
-					<div class="row mb-4">
-						<div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-sm-12">
-							<div class="card h-100">
-								<div class="card-header">
-									Grafik Pengunjung Website
-								</div>
-								<div class="card-body">
-									<div class="panel panel-primary">
-										<div class="panel-body" style="position: relative; height:280px; width:100%;">
-											<canvas id="website_visitor" width="100%" height="30"></canvas>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</main>
 
 			<!-- Footer -->
-			<?php $this->load->view("admin/_partials/footer.php") ?>
+			<?php $this->load->view("_partials/footer.php") ?>
 
 		</div>
 	</div>
 
 	<!-- JS -->
-	<?php $this->load->view("admin/_partials/js.php") ?>
+	<?php $this->load->view("_partials/js.php") ?>
 
 </body>
 
